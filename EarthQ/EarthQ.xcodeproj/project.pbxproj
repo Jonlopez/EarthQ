@@ -12,6 +12,8 @@
 		5F6F45E61E2EAC19006150F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F45E41E2EAC19006150F3 /* Main.storyboard */; };
 		5F6F45E81E2EAC19006150F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F45E71E2EAC19006150F3 /* Assets.xcassets */; };
 		5F6F45EB1E2EAC19006150F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F6F45E91E2EAC19006150F3 /* LaunchScreen.storyboard */; };
+		5FB3F13A1E4A5F6900819588 /* PrincipalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3F1391E4A5F6900819588 /* PrincipalTableViewController.swift */; };
+		5FB3F13C1E4A6A9E00819588 /* PrincipalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB3F13B1E4A6A9E00819588 /* PrincipalTableViewCell.swift */; };
 		F63115789E48A344C7B88EE3 /* Pods_EarthQ.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1704F7D23647CC97886F539 /* Pods_EarthQ.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,8 @@
 		5F6F45E71E2EAC19006150F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F6F45EA1E2EAC19006150F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F6F45EC1E2EAC19006150F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FB3F1391E4A5F6900819588 /* PrincipalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalTableViewController.swift; sourceTree = "<group>"; };
+		5FB3F13B1E4A6A9E00819588 /* PrincipalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalTableViewCell.swift; sourceTree = "<group>"; };
 		7FC6A4058C893B62028A11F2 /* Pods-EarthQ.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthQ.release.xcconfig"; path = "Pods/Target Support Files/Pods-EarthQ/Pods-EarthQ.release.xcconfig"; sourceTree = "<group>"; };
 		C1704F7D23647CC97886F539 /* Pods_EarthQ.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EarthQ.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DA74E1992FFEC924C5147B /* Pods-EarthQ.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EarthQ.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EarthQ/Pods-EarthQ.debug.xcconfig"; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				5F6F45E71E2EAC19006150F3 /* Assets.xcassets */,
 				5F6F45E91E2EAC19006150F3 /* LaunchScreen.storyboard */,
 				5F6F45EC1E2EAC19006150F3 /* Info.plist */,
+				5FB3F1391E4A5F6900819588 /* PrincipalTableViewController.swift */,
+				5FB3F13B1E4A6A9E00819588 /* PrincipalTableViewCell.swift */,
 			);
 			path = EarthQ;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB3F13C1E4A6A9E00819588 /* PrincipalTableViewCell.swift in Sources */,
+				5FB3F13A1E4A5F6900819588 /* PrincipalTableViewController.swift in Sources */,
 				5F6F45E31E2EAC19006150F3 /* ViewController.swift in Sources */,
 				5F6F45E11E2EAC19006150F3 /* AppDelegate.swift in Sources */,
 			);
