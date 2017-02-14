@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class PrincipalTableViewController: UITableViewController {
-
+    
+    var magnitud:Float = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +21,8 @@ class PrincipalTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,10 +43,27 @@ class PrincipalTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MiCelda", for: indexPath) as! PrincipalTableViewCell
 
         // Configure the cell...
-
+        var place = ""
+        
+        Alamofire.request("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02&minmagnitude=\(self.magnitud)").responseJSON { response in
+            print(response.request ?? "error")  // original URL request
+            print(response.response ?? "error") // HTTP URL response
+            print(response.data ?? "error")     // server data
+            print(response.result)   // result of response serialization
+            
+            if let datosJSON = response.result.value {
+                
+                let json = JSON(datosJSON)
+                
+                print("JSON: \(json)")
+                place = json["features"][indexPath.row]["properties"]["place"].stringValue
+                cell.etiqueta.text = place
+            }
+        }
+        
         return cell
     }
 
@@ -79,15 +101,14 @@ class PrincipalTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
+/*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+        
+    }*/
 
 }

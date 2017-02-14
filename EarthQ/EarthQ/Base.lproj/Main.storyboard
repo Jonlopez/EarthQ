@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yf8-oM-Qnj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yf8-oM-Qnj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,22 +19,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="z9b-qQ-CgG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MiCelda" id="z9b-qQ-CgG" customClass="PrincipalTableViewCell" customModule="EarthQ" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z9b-qQ-CgG" id="Nho-kw-2o6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hola" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVL-EZ-Urv">
-                                            <rect key="frame" x="22" y="11" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hola" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVL-EZ-Urv">
+                                            <rect key="frame" x="8" y="11" width="359" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="AVL-EZ-Urv" firstAttribute="top" secondItem="Nho-kw-2o6" secondAttribute="topMargin" constant="3" id="ACF-zD-5br"/>
+                                        <constraint firstItem="AVL-EZ-Urv" firstAttribute="leading" secondItem="Nho-kw-2o6" secondAttribute="leadingMargin" id="Lgl-ji-0eh"/>
+                                        <constraint firstItem="AVL-EZ-Urv" firstAttribute="trailing" secondItem="Nho-kw-2o6" secondAttribute="trailingMargin" id="ZOc-4v-lxf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="etiqueta" destination="AVL-EZ-Urv" id="POU-BJ-PHY"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,11 +49,11 @@
                             <outlet property="delegate" destination="WkC-pO-iTO" id="e9I-Bh-At9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="86C-6Q-iOQ"/>
+                    <navigationItem key="navigationItem" title="Terremotos" id="86C-6Q-iOQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJY-tt-RxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2690" y="-607"/>
+            <point key="canvasLocation" x="2688.8000000000002" y="-607.64617691154433"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hv9-be-OVE">
@@ -104,6 +112,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JB-ss-c3S">
                                         <rect key="frame" x="163.5" y="108" width="48" height="30"/>
                                         <state key="normal" title="Buscar"/>
+                                        <connections>
+                                            <segue destination="WkC-pO-iTO" kind="show" identifier="segueBuscar" id="khV-eE-xQ7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -121,11 +132,14 @@
                             <constraint firstItem="L3L-hF-gjU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="54" id="xod-2D-pM2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mef-EG-N0X"/>
+                    <navigationItem key="navigationItem" title="EarthQ" id="mef-EG-N0X"/>
+                    <connections>
+                        <outlet property="sliderMagnitud" destination="0lt-vY-Gnv" id="Cjb-5c-Jha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1895" y="-598"/>
+            <point key="canvasLocation" x="1892" y="-607"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,8 @@ import UIKit
 
 class PrincipalTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var etiqueta: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
