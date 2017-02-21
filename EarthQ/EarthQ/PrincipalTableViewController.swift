@@ -12,19 +12,40 @@ import SwiftyJSON
 
 class PrincipalTableViewController: UITableViewController {
     
+    var terremotosJSON : JSON! = nil
+    
     var magnitud:Float = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
+        get_data_url()
     }
 
+    func get_data_url(){
+        Alamofire.request("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02&minmagnitude=\(self.magnitud)").responseJSON { response in
+            print(response.request ?? "error")  // original URL request
+            print(response.response ?? "error") // HTTP URL response
+            print(response.data ?? "error")     // server data
+            print(response.result)   // result of response serialization
+            
+            switch response.result {
+                
+            case .success(let value):
+                
+                let json = JSON(value)
+                
+                //print("JSON_Catalogos: \(json)")
+                
+                self.terremotosJSON = json
+                
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -39,30 +60,20 @@ class PrincipalTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        
+        if self.terremotosJSON != nil {
+            return (self.terremotosJSON?["features"].underestimatedCount)!
+        }else{
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MiCelda", for: indexPath) as! PrincipalTableViewCell
-
-        // Configure the cell...
-        var place = ""
         
-        Alamofire.request("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02&minmagnitude=\(self.magnitud)").responseJSON { response in
-            print(response.request ?? "error")  // original URL request
-            print(response.response ?? "error") // HTTP URL response
-            print(response.data ?? "error")     // server data
-            print(response.result)   // result of response serialization
-            
-            if let datosJSON = response.result.value {
-                
-                let json = JSON(datosJSON)
-                
-                print("JSON: \(json)")
-                place = json["features"][indexPath.row]["properties"]["place"].stringValue
-                cell.etiqueta.text = place
-            }
-        }
+        cell.etiqueta.text = (self.terremotosJSON?["features"][indexPath.row]["properties"]["place"].stringValue)
+        
+        print( "Nombre del catalogo -> \(self.terremotosJSON?["features"][indexPath.row]["properties"]["place"])")        
         
         return cell
     }
