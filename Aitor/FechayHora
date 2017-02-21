@@ -1,3 +1,7 @@
 Cojer fecha y hora:
 http://rodfraga.logdown.com/posts/295326-current-nsdate-with-swift
 https://developer.apple.com/reference/foundation/dateformatter
+
+Para el segmented control:
+https://developer.apple.com/ios/human-interface-guidelines/ui-controls/segmented-controls/
+https://developer.apple.com/reference/uikit/uisegmentedcontrol
