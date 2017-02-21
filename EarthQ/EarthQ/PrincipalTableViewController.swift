@@ -15,13 +15,18 @@ class PrincipalTableViewController: UITableViewController {
     var terremotosJSON : JSON! = nil
     
     var magnitud:Float = 0
+    
+    var fecha_start:String?
+
+    var fecha_end:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         get_data_url()
     }
 
     func get_data_url(){
-        Alamofire.request("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2014-01-01&endtime=2014-01-02&minmagnitude=\(self.magnitud)").responseJSON { response in
+        Alamofire.request("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=\(self.fecha_start!)&endtime=\(self.fecha_end!)&minmagnitude=\(self.magnitud)").responseJSON { response in
             print(response.request ?? "error")  // original URL request
             print(response.response ?? "error") // HTTP URL response
             print(response.data ?? "error")     // server data
@@ -32,8 +37,6 @@ class PrincipalTableViewController: UITableViewController {
             case .success(let value):
                 
                 let json = JSON(value)
-                
-                //print("JSON_Catalogos: \(json)")
                 
                 self.terremotosJSON = json
                 
@@ -73,7 +76,7 @@ class PrincipalTableViewController: UITableViewController {
         
         cell.etiqueta.text = (self.terremotosJSON?["features"][indexPath.row]["properties"]["place"].stringValue)
         
-        print( "Nombre del catalogo -> \(self.terremotosJSON?["features"][indexPath.row]["properties"]["place"])")        
+        print( "Nombre del terremoto -> \(self.terremotosJSON?["features"][indexPath.row]["properties"]["place"])")
         
         return cell
     }
